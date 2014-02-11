@@ -14,7 +14,7 @@
     "shortName": "Simplicity Weather",
     "companyName": "Jim Drey",
     "watchapp": {
-        "watchface": false
+        "watchface": true
     },
     "resources": {
         "media": [
