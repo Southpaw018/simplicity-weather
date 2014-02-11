@@ -1,0 +1,60 @@
+{
+    "versionLabel": "1.0.0",
+    "uuid": "35ef1f0b-8125-4bcf-b2eb-282145cf811c",
+    "appKeys": {
+        "city": 2,
+        "temperature": 1,
+        "icon": 0
+    },
+    "longName": "Simplicity Custom",
+    "versionCode": 0,
+    "capabilities": [
+        ""
+    ],
+    "shortName": "Simplicity Custom",
+    "companyName": "Jim Drey",
+    "watchapp": {
+        "watchface": false
+    },
+    "resources": {
+        "media": [
+            {
+                "type": "png",
+                "name": "IMAGE_SUN",
+                "file": "images/sun.png"
+            },
+            {
+                "type": "png",
+                "name": "IMAGE_SNOW",
+                "file": "images/snow.png"
+            },
+            {
+                "type": "png",
+                "name": "IMAGE_RAIN",
+                "file": "images/rain.png"
+            },
+            {
+                "type": "png",
+                "name": "IMAGE_CLOUD",
+                "file": "images/cloud.png"
+            },
+            {
+                "characterRegex": "[:0-9]",
+                "type": "font",
+                "name": "FONT_ROBOTO_BOLD_SUBSET_49",
+                "file": "fonts/Roboto-Bold.ttf"
+            },
+            {
+                "type": "font",
+                "name": "FONT_ROBOTO_CONDENSED_21",
+                "file": "fonts/Roboto-Condensed.ttf"
+            },
+            {
+                "menuIcon": true,
+                "type": "png",
+                "name": "IMAGE_MENU_ICON",
+                "file": "images/menu_icon_simplicity.png"
+            }
+        ]
+    }
+}
