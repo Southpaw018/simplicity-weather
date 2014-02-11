@@ -13,8 +13,7 @@ function iconFromWeatherId(weatherId) {
 function fetchWeather(latitude, longitude) {
 	var response;
 	var req = new XMLHttpRequest();
-	req.open('GET', "http://api.openweathermap.org/data/2.1/find/city?" +
-		"lat=" + latitude + "&lon=" + longitude + "&cnt=1", true);
+	req.open('GET', "http://api.openweathermap.org/data/2.1/find/city?" + "lat=" + latitude + "&lon=" + longitude + "&cnt=1", true);
 	req.onload = function(e) {
 		if (req.readyState == 4) {
 			if(req.status == 200) {
