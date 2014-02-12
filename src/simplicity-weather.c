@@ -135,6 +135,7 @@ static void window_load(Window *window) {
 	temperature_layer = text_layer_create(GRect(0, 95, 144, 68));
 	text_layer_set_text_color(temperature_layer, GColorWhite);
 	text_layer_set_background_color(temperature_layer, GColorClear);
+	text_layer_set_text_alignment(temperature_layer, GTextAlignmentRight);
 	text_layer_set_font(temperature_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
 	text_layer_set_text_alignment(temperature_layer, GTextAlignmentCenter);
 	layer_add_child(window_layer, text_layer_get_layer(temperature_layer));
@@ -143,7 +144,8 @@ static void window_load(Window *window) {
 	city_layer = text_layer_create(GRect(0, 125, 144, 68));
 	text_layer_set_text_color(city_layer, GColorWhite);
 	text_layer_set_background_color(city_layer, GColorClear);
-	text_layer_set_font(city_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
+	text_layer_set_text_alignment(temperature_layer, GTextAlignmentRight);
+	text_layer_set_font(city_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
 	text_layer_set_text_alignment(city_layer, GTextAlignmentCenter);
 	layer_add_child(window_layer, text_layer_get_layer(city_layer));
 
