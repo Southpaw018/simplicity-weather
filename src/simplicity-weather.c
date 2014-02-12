@@ -44,7 +44,7 @@ static void sync_tuple_changed_callback(const uint32_t key, const Tuple* new_tup
 			text_layer_set_text(temperature_layer, new_tuple->value->cstring);
 			break;
 		case WEATHER_CITY_KEY:
-			//text_layer_set_text(city_layer, new_tuple->value->cstring);
+			text_layer_set_text(city_layer, new_tuple->value->cstring);
 			break;
 	}
 }
@@ -132,21 +132,19 @@ static void window_load(Window *window) {
 	layer_add_child(window_layer, bitmap_layer_get_layer(icon_layer));*/
 
 	//Weather temperature
-	temperature_layer = text_layer_create(GRect(0, 95, 144, 68));
+	temperature_layer = text_layer_create(GRect(103, 0, 40, 18));
 	text_layer_set_text_color(temperature_layer, GColorWhite);
 	text_layer_set_background_color(temperature_layer, GColorClear);
 	text_layer_set_text_alignment(temperature_layer, GTextAlignmentRight);
 	text_layer_set_font(temperature_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-	text_layer_set_text_alignment(temperature_layer, GTextAlignmentCenter);
 	layer_add_child(window_layer, text_layer_get_layer(temperature_layer));
 
 	//Weather location
-	city_layer = text_layer_create(GRect(0, 125, 144, 68));
+	city_layer = text_layer_create(GRect(1, 18, 142, 18));
 	text_layer_set_text_color(city_layer, GColorWhite);
 	text_layer_set_background_color(city_layer, GColorClear);
-	text_layer_set_text_alignment(temperature_layer, GTextAlignmentRight);
+	text_layer_set_text_alignment(city_layer, GTextAlignmentRight);
 	text_layer_set_font(city_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
-	text_layer_set_text_alignment(city_layer, GTextAlignmentCenter);
 	layer_add_child(window_layer, text_layer_get_layer(city_layer));
 
 	//Init weather info
