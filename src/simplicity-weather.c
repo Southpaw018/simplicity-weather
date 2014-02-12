@@ -37,14 +37,14 @@ static void sync_tuple_changed_callback(const uint32_t key, const Tuple* new_tup
 				gbitmap_destroy(icon_bitmap);
 			}
 			icon_bitmap = gbitmap_create_with_resource(WEATHER_ICONS[new_tuple->value->uint8]);
-			bitmap_layer_set_bitmap(icon_layer, icon_bitmap);
+			//bitmap_layer_set_bitmap(icon_layer, icon_bitmap);
 			break;
 		case WEATHER_TEMPERATURE_KEY:
 			//App Sync keeps new_tuple in sync_buffer, so we may use it directly
 			text_layer_set_text(temperature_layer, new_tuple->value->cstring);
 			break;
 		case WEATHER_CITY_KEY:
-			text_layer_set_text(city_layer, new_tuple->value->cstring);
+			//text_layer_set_text(city_layer, new_tuple->value->cstring);
 			break;
 	}
 }
