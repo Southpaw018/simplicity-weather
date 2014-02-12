@@ -20,7 +20,7 @@ function fetchWeather(latitude, longitude) {
 				console.log(req.responseText);
 				response = JSON.parse(req.responseText);
 				var temperature, icon, city;
-				if (response && response.length > 0) {
+				if (response && Object.keys(response).length > 0) {
 					var weatherResult = response;
 					temperature = Math.round((weatherResult.main.temp - 273.15) * 1.8 + 32);
 					icon = iconFromWeatherId(weatherResult.weather[0].id);

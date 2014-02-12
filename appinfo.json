@@ -19,20 +19,9 @@
     "resources": {
         "media": [
             {
-                "menuIcon": true,
                 "type": "png",
-                "name": "IMAGE_MENU_ICON",
-                "file": "images/menu_icon_simplicity.png"
-            },
-            {
-                "type": "png",
-                "name": "IMAGE_CLOUD",
-                "file": "images/cloud.png"
-            },
-            {
-                "type": "png",
-                "name": "IMAGE_RAIN",
-                "file": "images/rain.png"
+                "name": "IMAGE_SUN",
+                "file": "images/sun.png"
             },
             {
                 "type": "png",
@@ -41,8 +30,19 @@
             },
             {
                 "type": "png",
-                "name": "IMAGE_SUN",
-                "file": "images/sun.png"
+                "name": "IMAGE_RAIN",
+                "file": "images/rain.png"
+            },
+            {
+                "type": "png",
+                "name": "IMAGE_CLOUD",
+                "file": "images/cloud.png"
+            },
+            {
+                "menuIcon": true,
+                "type": "png",
+                "name": "IMAGE_MENU_ICON",
+                "file": "images/menu_icon_simplicity.png"
             }
         ]
     }
