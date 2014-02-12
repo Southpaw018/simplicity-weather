@@ -111,14 +111,14 @@ static void window_load(Window *window) {
 	text_date_layer = text_layer_create(GRect(8, 68, 144-8, 168-68));
 	text_layer_set_text_color(text_date_layer, GColorWhite);
 	text_layer_set_background_color(text_date_layer, GColorClear);
-	text_layer_set_font(text_date_layer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ROBOTO_CONDENSED_21)));
+	text_layer_set_font(text_date_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 	layer_add_child(window_layer, text_layer_get_layer(text_date_layer));
 
 	//Simplicity time
 	text_time_layer = text_layer_create(GRect(7, 92, 144-7, 168-92));
 	text_layer_set_text_color(text_time_layer, GColorWhite);
 	text_layer_set_background_color(text_time_layer, GColorClear);
-	text_layer_set_font(text_time_layer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_ROBOTO_BOLD_SUBSET_49)));
+	text_layer_set_font(text_time_layer, fonts_get_system_font(FONT_KEY_ROBOTO_BOLD_SUBSET_49));
 	layer_add_child(window_layer, text_layer_get_layer(text_time_layer));
 
 	//Simplicity separator line
@@ -128,24 +128,24 @@ static void window_load(Window *window) {
 	layer_add_child(window_layer, line_layer);
 
 	//Weather icon
-	icon_layer = bitmap_layer_create(GRect(32, 10, 80, 80));
-	layer_add_child(window_layer, bitmap_layer_get_layer(icon_layer));
+	/*icon_layer = bitmap_layer_create(GRect(32, 10, 80, 80));
+	layer_add_child(window_layer, bitmap_layer_get_layer(icon_layer));*/
 
 	//Weather temperature
 	temperature_layer = text_layer_create(GRect(0, 95, 144, 68));
 	text_layer_set_text_color(temperature_layer, GColorWhite);
 	text_layer_set_background_color(temperature_layer, GColorClear);
-	text_layer_set_font(temperature_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
+	text_layer_set_font(temperature_layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
 	text_layer_set_text_alignment(temperature_layer, GTextAlignmentCenter);
 	layer_add_child(window_layer, text_layer_get_layer(temperature_layer));
 
 	//Weather location
-	city_layer = text_layer_create(GRect(0, 125, 144, 68));
+	/*city_layer = text_layer_create(GRect(0, 125, 144, 68));
 	text_layer_set_text_color(city_layer, GColorWhite);
 	text_layer_set_background_color(city_layer, GColorClear);
 	text_layer_set_font(city_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
 	text_layer_set_text_alignment(city_layer, GTextAlignmentCenter);
-	layer_add_child(window_layer, text_layer_get_layer(city_layer));
+	layer_add_child(window_layer, text_layer_get_layer(city_layer));*/
 
 	//Init weather info
 	Tuplet initial_values[] = {
