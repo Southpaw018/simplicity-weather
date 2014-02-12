@@ -22,7 +22,7 @@ function fetchWeather(latitude, longitude) {
 				var temperature, icon, city;
 				if (response && response.list && response.list.length > 0) {
 					var weatherResult = response.list[0];
-					temperature = Math.round(weatherResult.main.temp - 273.15);
+					temperature = Math.round((weatherResult.main.temp - 273.15) * 1.8 + 32);
 					icon = iconFromWeatherId(weatherResult.weather[0].id);
 					city = weatherResult.name;
 					console.log(temperature);
@@ -30,7 +30,7 @@ function fetchWeather(latitude, longitude) {
 					console.log(city);
 					Pebble.sendAppMessage({
 						"icon":icon,
-						"temperature":temperature + "\u00B0C",
+						"temperature":temperature + "\u00B0F",
 						"city":city});
 				}
 			} else {

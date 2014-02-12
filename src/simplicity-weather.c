@@ -140,17 +140,17 @@ static void window_load(Window *window) {
 	layer_add_child(window_layer, text_layer_get_layer(temperature_layer));
 
 	//Weather location
-	/*city_layer = text_layer_create(GRect(0, 125, 144, 68));
+	city_layer = text_layer_create(GRect(0, 125, 144, 68));
 	text_layer_set_text_color(city_layer, GColorWhite);
 	text_layer_set_background_color(city_layer, GColorClear);
 	text_layer_set_font(city_layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
 	text_layer_set_text_alignment(city_layer, GTextAlignmentCenter);
-	layer_add_child(window_layer, text_layer_get_layer(city_layer));*/
+	layer_add_child(window_layer, text_layer_get_layer(city_layer));
 
 	//Init weather info
 	Tuplet initial_values[] = {
 		TupletInteger(WEATHER_ICON_KEY, (uint8_t) 1),
-		TupletCString(WEATHER_TEMPERATURE_KEY, "1234\u00B0C"),
+		TupletCString(WEATHER_TEMPERATURE_KEY, "-\u00B0F"),
 		TupletCString(WEATHER_CITY_KEY, "St Pebblesburg"),
 	};
 
