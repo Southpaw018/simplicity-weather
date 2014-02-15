@@ -77,11 +77,9 @@ void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
 
 	char *time_format;
 
-
 	//TODO: Only update the date when it's changed.
 	strftime(date_text, sizeof(date_text), "%B %e", tick_time);
 	text_layer_set_text(text_date_layer, date_text);
-
 
 	if (clock_is_24h_style()) {
 		time_format = "%R";
@@ -173,9 +171,7 @@ static void window_unload(Window *window) {
 
 void init(void) {
 	window = window_create();
-
 	window_set_background_color(window, GColorBlack);
-
 	window_set_window_handlers(window, (WindowHandlers) {
 		.load = window_load,
 		.unload = window_unload
