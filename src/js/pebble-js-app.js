@@ -49,11 +49,11 @@ function fetchWeather(latitude, longitude) {
 					var tempResult = response.main.temp;
 					if (response.sys.country === "US") {
 						// Convert temperature to Fahrenheit if user is within the US
-						temperature = Math.round(((tempResult - 273.15) * 1.8) + 32);
+						temperature = Math.round(((tempResult - 273.15) * 1.8) + 32) + "\u00B0F";
 					}
 					else {
 						// Otherwise, convert temperature to Celsius
-						temperature = Math.round(tempResult - 273.15);
+						temperature = Math.round(tempResult - 273.15) + "\u00B0C";
 					}		 
 					//var condition = response.weather[0].id;
 					var city = response.name;
@@ -61,8 +61,8 @@ function fetchWeather(latitude, longitude) {
 					console.log("Temperature: " + temperature + " City: " + city);
 
 					Pebble.sendAppMessage({
-						"city": city,
-						"temperature": temperature
+						"temperature": temperature,
+						"city": city
 					});
 					updateInProgress = false;
 				}
