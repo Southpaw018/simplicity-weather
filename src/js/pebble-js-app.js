@@ -44,8 +44,7 @@ function fetchWeather(latitude, longitude) {
 			if(req.status == 200) {
 				console.log(req.responseText);
 				response = JSON.parse(req.responseText);
-				var temperature, icon, city, sunrise, sunset, condition;
-				var current_time = Date.now() / 1000;
+				var temperature;
 				if (response) {
 					var tempResult = response.main.temp;
 					if (response.sys.country === "US") {
@@ -60,10 +59,10 @@ function fetchWeather(latitude, longitude) {
 					var city = response.name;
 
 					console.log("Temperature: " + temperature + " City: " + city);
-							  
+
 					Pebble.sendAppMessage({
 						"city": city,
-						"temperature": temperature,
+						"temperature": temperature
 					});
 					updateInProgress = false;
 				}
