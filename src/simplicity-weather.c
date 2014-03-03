@@ -32,7 +32,7 @@ static void sync_tuple_changed_callback(const uint32_t key, const Tuple* new_tup
 	}
 }
 
-static void send_cmd(void) {
+static void update_weather(void) {
 	Tuplet value = TupletInteger(1, 1);
 
 	DictionaryIterator *iter;
@@ -79,7 +79,7 @@ void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
 
 	text_layer_set_text(text_time_layer, time_text);
 
-	send_cmd();
+	update_weather();
 }
 
 void deinit(void) {
