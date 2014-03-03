@@ -1,12 +1,12 @@
 //Partially adapted (and mostly stolen) from github.com/Niknam/futura-weather-sdk2.0 / src / js / pebble-js-app.js
 
 Pebble.addEventListener("ready", function(e) {
-	console.log("Starting ...");
+	//console.log("Starting ...");
 	updateWeather();
 });
 
 Pebble.addEventListener("appmessage", function(e) {
-	console.log("Got a message - Starting weather request...");
+	//console.log("Got a message - Starting weather request...");
 	updateWeather();
 });
 
@@ -19,13 +19,13 @@ function updateWeather() {
 		navigator.geolocation.getCurrentPosition(locationSuccess, locationError, locationOptions);
 	}
 	else {
-		console.log("Not starting a new request. Another one is in progress...");
+		//console.log("Not starting a new request. Another one is in progress...");
 	}
 }
 
 function locationSuccess(pos) {
 	var coordinates = pos.coords;
-	console.log("Got coordinates: " + JSON.stringify(coordinates));
+	//console.log("Got coordinates: " + JSON.stringify(coordinates));
 	fetchWeather(coordinates.latitude, coordinates.longitude);
 }
 
@@ -42,7 +42,7 @@ function fetchWeather(latitude, longitude) {
 	req.onload = function(e) {
 		if (req.readyState == 4) {
 			if(req.status == 200) {
-				console.log(req.responseText);
+				//console.log(req.responseText);
 				response = JSON.parse(req.responseText);
 				var temperature;
 				if (response) {
@@ -58,7 +58,7 @@ function fetchWeather(latitude, longitude) {
 					//var condition = response.weather[0].id;
 					var city = response.name;
 
-					console.log("Temperature: " + temperature + " City: " + city);
+					console.log(new Date().toTimeString() + " | " + "Temperature: " + temperature + " City: " + city);
 
 					Pebble.sendAppMessage({
 						"temperature": temperature,

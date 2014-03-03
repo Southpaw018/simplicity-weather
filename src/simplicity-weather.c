@@ -78,6 +78,8 @@ void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
 	}
 
 	text_layer_set_text(text_time_layer, time_text);
+
+	send_cmd();
 }
 
 void deinit(void) {
