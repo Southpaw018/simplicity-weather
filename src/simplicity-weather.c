@@ -53,33 +53,37 @@ void line_layer_update_callback(Layer *layer, GContext* ctx) {
 	graphics_fill_rect(ctx, layer_get_bounds(layer), 0, GCornerNone);
 }
 
-void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
+void handle_tick(struct tm *tick_time, TimeUnits units_changed) {
 	//Need to be static because they're used by the system later.
 	static char time_text[] = "00:00";
 	static char date_text[] = "Xxxxxxxxx 00";
 
-	char *time_format;
-
-	//TODO: Only update the date when it's changed.
-	strftime(date_text, sizeof(date_text), "%B %e", tick_time);
-	text_layer_set_text(text_date_layer, date_text);
-
-	if (clock_is_24h_style()) {
-		time_format = "%R";
-	} else {
-		time_format = "%I:%M";
+	if (units_changed & DAY_UNIT) {
+		strftime(date_text, sizeof(date_text), "%B %e", tick_time);
+		text_layer_set_text(text_date_layer, date_text);
 	}
 
-	strftime(time_text, sizeof(time_text), time_format, tick_time);
+	if (units_changed & MINUTE_UNIT) {
+		char *time_format;
+		if (clock_is_24h_style()) {
+			time_format = "%R";
+		} else {
+			time_format = "%I:%M";
+		}
 
-	//Kludge to handle lack of non-padded hour format string for twelve hour clock.
-	if (!clock_is_24h_style() && (time_text[0] == '0')) {
-		memmove(time_text, &time_text[1], sizeof(time_text) - 1);
+		strftime(time_text, sizeof(time_text), time_format, tick_time);
+
+		//Kludge to handle lack of non-padded hour format string for twelve hour clock.
+		if (!clock_is_24h_style() && (time_text[0] == '0')) {
+			memmove(time_text, &time_text[1], sizeof(time_text) - 1);
+		}
+
+		text_layer_set_text(text_time_layer, time_text);
+
+		if (tick_time->tm_min % 5 == 0) {
+			update_weather();
+		}
 	}
-
-	text_layer_set_text(text_time_layer, time_text);
-
-	update_weather();
 }
 
 void deinit(void) {
@@ -132,9 +136,12 @@ static void window_load(Window *window) {
 		TupletCString(WEATHER_CITY_KEY, "St Pebblesburg")
 	};
 
+ 	time_t now = time(NULL);
+ 	handle_tick(localtime(&now), MINUTE_UNIT | HOUR_UNIT | DAY_UNIT);
+
 	app_sync_init(&sync, sync_buffer, sizeof(sync_buffer), initial_values, ARRAY_LENGTH(initial_values), sync_tuple_changed_callback, sync_error_callback, NULL);
 
-	send_cmd();
+	update_weather();
 }
 
 static void window_unload(Window *window) {
@@ -159,7 +166,7 @@ void init(void) {
 	const bool animated = true;
 	window_stack_push(window, animated);
 
-	tick_timer_service_subscribe(MINUTE_UNIT, handle_minute_tick);
+	tick_timer_service_subscribe(SECOND_UNIT, handle_tick);
 }
 
 int main(void) {
