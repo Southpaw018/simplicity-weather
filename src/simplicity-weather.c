@@ -166,7 +166,7 @@ void init(void) {
 	const bool animated = true;
 	window_stack_push(window, animated);
 
-	tick_timer_service_subscribe(SECOND_UNIT, handle_tick);
+	tick_timer_service_subscribe(MINUTE_UNIT, handle_tick);
 }
 
 int main(void) {
